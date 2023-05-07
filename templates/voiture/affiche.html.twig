@@ -1,0 +1,27 @@
+{% set mav_v=voitures[0].vitesse %}
+{% for j in voitures %}
+{% set mav_v=max(mav_v,j.vitesse) %}
+{% endfor %}
+
+<table border="2">
+<tr>
+    <th>ID</th>
+    <th>Marque</th>
+    <th>Lien</th>
+    
+    
+</tr>   
+    {% for i in voitures %}
+    {#{% if 'theorique' in i.Description %}#}
+    
+    <tr>
+        <td>{{i.id}}</td>
+        <td>{{i.marque | upper}}</td>
+        <td><a href="{{path('detail',{'vitesse':i.vitesse,'puissance':i.puissance}) }}">participer</a></td>
+        
+    </tr>
+    
+    {% endfor %}
+</table>
+<h3>Le nombre de voitures est {{voitures|length}} </h3>  
+<h3>MAX est {{mav_v}} </h3>  
